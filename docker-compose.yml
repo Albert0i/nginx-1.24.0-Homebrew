@@ -1,0 +1,17 @@
+version: "3"
+services:
+  redis:
+    build: 
+      context: .
+    image: 
+      ${IMAGE_NAME}:${IMAGE_VERSION}
+    container_name:
+        nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ${CONF_DIR}:c:\nginx\conf
+
+#
+# EOF (2022/04/29)
+#
