@@ -8,9 +8,9 @@ services:
     container_name:
         nginx
     ports:
-      - "8080:80"
+      - "8888:80"
     volumes:
-      - ${CONF_DIR}:c:\nginx\conf
+        - ${CONF_DIR}:C:\nginx\conf
 
 #
 # EOF (2022/04/29)

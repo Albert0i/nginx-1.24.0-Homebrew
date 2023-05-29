@@ -14,7 +14,7 @@ help:
 	@echo
 	@echo "Usage: make TARGET"
 	@echo
-	@echo "Nginx Dockerize project automation helper for Windows version 1.0"
+	@echo "Nginx Dockerize project automation helper for Windows version 1.1"
 	@echo
 	@echo "Targets:"
 	@echo "	build		build custom image"
@@ -22,13 +22,15 @@ help:
 	@echo "	down 		stop the server"
 	@echo "	ps 		show running containers"
 	@echo "	logs		server logs"
+	@echo "	xlogs		nginx access logs"
+	@echo "	xreload		reload nginx configuration"
 	@echo "	config		edit configuration"
 
 #
 # build custom image
 #
 build:
-	docker-compose build
+	docker-compose build --no-cache
 
 #
 # start the server
@@ -55,11 +57,23 @@ logs:
 	docker-compose logs
 
 #
+# nginx access logs
+#
+xlogs:
+	docker-compose exec nginx cmd /c type c:\nginx\logs\access.log
+
+#
+# reload nginx configuration
+#
+xreload:
+	docker-compose exec nginx cmd /c nginx -s reload
+
+#
 # edit configuration
 #
 config:
 	nano .env
 
 #
-# EOF (2022/04/29)
+# EOF (2022/06/02)
 #

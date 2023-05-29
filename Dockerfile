@@ -1,13 +1,13 @@
-FROM mcr.microsoft.com/windows/servercore:ltsc2019
+FROM mcr.microsoft.com/windows/servercore:20H2
 
-ENV NGINX_VER=1.20.2
+ENV NGINX_VER=1.24.0
 
 USER ContainerAdministrator
 RUN setx /M PATH "%PATH%;C:\nginx" &&\
-    curl -OL "http://nginx.org/download/nginx-1.20.2.zip" &&\ 
-    tar -xvf nginx-1.20.2.zip &&\
-	ren nginx-1.20.2 nginx &&\
-    del nginx-1.20.2.zip &&\
+    curl -OL "http://nginx.org/download/nginx-1.24.0.zip" &&\ 
+    tar -xvf nginx-1.24.0.zip &&\
+	ren nginx-1.24.0 nginx &&\
+    del nginx-1.24.0.zip &&\
     dir 
 USER ContainerUser
 
@@ -41,5 +41,5 @@ CMD ["nginx", "-g", "daemon off;"]
 #
 
 #
-# EOF (2022/04/29)
+# EOF (2023/05/26)
 #
